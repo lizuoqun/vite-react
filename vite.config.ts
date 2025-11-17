@@ -2,13 +2,14 @@ import type {Plugin} from 'vite';
 import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import mockjs from 'mockjs';
+import type {IncomingMessage, ServerResponse} from 'http';
 
 const viteMockServer = (): Plugin => {
   return {
     name: 'vite-mock-server',
     //使用vite插件的钩子函数
     configureServer(server) {
-      server.middlewares.use('/api/list', async (req, res) => {
+      server.middlewares.use('/api/list', async (req: IncomingMessage, res: ServerResponse) => {
         res.setHeader('Content-Type', 'application/json');
         const data = mockjs.mock({
           //返回1000条数据

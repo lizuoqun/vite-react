@@ -1,7 +1,7 @@
 import {createRoot} from 'react-dom/client';
 import {unstableSetRender} from 'antd';
 
-import {RouterProvider} from 'react-router';
+import {RouterProvider} from 'react-router/dom';
 import router from './router';
 import '@ant-design/v5-patch-for-react-19';
 import './index.css';

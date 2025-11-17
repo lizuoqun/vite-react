@@ -3,7 +3,7 @@ import UseStateHooke from '../pages/hooks/useStateHook.tsx';
 import UseReducerHook from '../pages/hooks/useReducerHook.tsx';
 import UseImmerHook from '../pages/hooks/useImmerHook.tsx';
 import useSyncExternalStoreHook from '../pages/hooks/useSyncExternalStoreHook.tsx';
-import useTransitionHook from '../pages/hooks/useTransitionHook.tsx'
+import useTransitionHook from '../pages/hooks/useTransitionHook.tsx';
 import Home from '../pages/Home.tsx';
 
 const router = createBrowserRouter([

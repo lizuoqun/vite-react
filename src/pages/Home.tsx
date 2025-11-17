@@ -7,7 +7,7 @@ const Home = () => {
     <ul>
       {
         router.routes.map(item => {
-          return <li key={item.path}><NavLink to={item.path}>{item.path}</NavLink></li>;
+          return <li key={item.path!}><NavLink to={item.path!}>{item.path}</NavLink></li>;
         })
       }
     </ul>
