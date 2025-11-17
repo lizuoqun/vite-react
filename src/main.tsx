@@ -1,6 +1,5 @@
-import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
-import { unstableSetRender } from 'antd';
+import {unstableSetRender} from 'antd';
 
 import {RouterProvider} from 'react-router';
 import router from './router';
@@ -8,9 +7,7 @@ import '@ant-design/v5-patch-for-react-19';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <RouterProvider router={router}/>
-  </StrictMode>
+  <RouterProvider router={router}/>
 );
 
 unstableSetRender((node, container) => {
