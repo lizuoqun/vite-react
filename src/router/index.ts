@@ -6,7 +6,7 @@ import useSyncExternalStoreHook from '../pages/hooks/useSyncExternalStoreHook.ts
 import useTransitionHook from '../pages/hooks/useTransitionHook.tsx';
 import Home from '../pages/Home.tsx';
 
-const router = createBrowserRouter([
+const routerArray: any[] = [
   {
     path: '/',
     Component: Home
@@ -31,6 +31,8 @@ const router = createBrowserRouter([
     path: '/useTransitionHook',
     Component: useTransitionHook
   }
-]);
+];
+
+const router = createBrowserRouter(routerArray);
 
 export default router;

@@ -22,7 +22,16 @@ const useTransitionHook = () => {
         setList(res.list);
       });
     });
+
+    const res = findItem();
+    console.log('findItem---', res);
   };
+
+  const findItem = () => {
+    //过滤列表，仅在 deferredQuery 更新时触发
+    return list.filter(item => item.name.toString().includes(deferredQuery));
+  };
+
   return <>
     <Input value={val} onChange={handleChange}></Input>
     {isPending && <div>Loading...</div>}
