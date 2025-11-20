@@ -7,9 +7,11 @@ import useLayoutEffectHook from '../pages/hooks/useLayoutEffectHook.tsx';
 import useSyncExternalStoreHook from '../pages/hooks/useSyncExternalStoreHook.tsx';
 import useTransitionHook from '../pages/hooks/useTransitionHook.tsx';
 import useRefHook from '../pages/hooks/useRefHook.tsx';
+import useImperativeHandleHook from '../pages/hooks/useImperativeHandleHook.tsx';
+import useContextHook from '../pages/hooks/useContextHook.tsx';
 import Home from '../pages/Home.tsx';
 
-const routerArray: any[] = [
+export const hookRouters: any[] = [
   {
     path: '/',
     Component: Home
@@ -45,8 +47,18 @@ const routerArray: any[] = [
   {
     path: '/useRefHook',
     Component: useRefHook
+  },
+  {
+    path: '/useImperativeHandleHook',
+    Component: useImperativeHandleHook
+  },
+  {
+    path: '/useContextHook',
+    Component: useContextHook
   }
 ];
+
+const routerArray = [...hookRouters];
 
 const router = createBrowserRouter(routerArray);
 
