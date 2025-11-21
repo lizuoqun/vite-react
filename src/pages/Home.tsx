@@ -1,5 +1,5 @@
 import {NavLink} from 'react-router';
-import {hookRouters} from '../router';
+import {componentRouters, hookRouters} from '../router';
 
 const Home = () => {
   const homeStyle = {
@@ -17,14 +17,15 @@ const Home = () => {
     fontSize: '24px',
     fontWeight: 'bold'
   };
+  const routerObject = {'Hooks': hookRouters, 'Components': componentRouters};
   return <div style={homeStyle}>
     {
-      Array.from({length: 1}).map(() => {
+      Array.from(Object.entries(routerObject)).map(([key, item], index) => {
         return <div style={itemStyle}>
-          <div style={titleStyle}>Hooks</div>
+          <div style={titleStyle}>{key}</div>
           <ul>
             {
-              hookRouters.map(item => {
+              item.map(item => {
                 return <li key={item.path}><NavLink to={item.path}>{item.path}</NavLink></li>;
               })
             }

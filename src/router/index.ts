@@ -13,9 +13,17 @@ import useMemoHook from '../pages/hooks/useMemoHook.tsx';
 import useCallbackHook from '../pages/hooks/useCallbackHook.tsx';
 import useDebugValueHook from '../pages/hooks/useDebugValueHook.tsx';
 import useIdHook from '../pages/hooks/useIdHook.tsx';
-import Home from '../pages/Home.tsx';
 
-export const hookRouters: {path: string, Component: any}[] = [
+import communicate from '../pages/components/communicate.tsx';
+import Home from '../pages/Home.tsx';
+import React from 'react';
+
+interface RouterItem {
+  path: string;
+  Component: React.FC;
+}
+
+export const hookRouters: RouterItem[] = [
   {
     path: '/',
     Component: Home
@@ -78,7 +86,14 @@ export const hookRouters: {path: string, Component: any}[] = [
   }
 ];
 
-const routerArray = [...hookRouters];
+export const componentRouters: RouterItem[] = [
+  {
+    path: '/communicate',
+    Component: communicate
+  }
+];
+
+const routerArray: any[] = [...hookRouters, ...componentRouters];
 
 const router = createBrowserRouter(routerArray);
 
