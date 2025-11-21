@@ -9,6 +9,8 @@ import useTransitionHook from '../pages/hooks/useTransitionHook.tsx';
 import useRefHook from '../pages/hooks/useRefHook.tsx';
 import useImperativeHandleHook from '../pages/hooks/useImperativeHandleHook.tsx';
 import useContextHook from '../pages/hooks/useContextHook.tsx';
+import useMemoHook from '../pages/hooks/useMemoHook.tsx';
+import useCallbackHook from '../pages/hooks/useCallbackHook.tsx';
 import Home from '../pages/Home.tsx';
 
 export const hookRouters: any[] = [
@@ -55,6 +57,14 @@ export const hookRouters: any[] = [
   {
     path: '/useContextHook',
     Component: useContextHook
+  },
+  {
+    path: '/useMemoHook',
+    Component: useMemoHook
+  },
+  {
+    path: '/useCallbackHook',
+    Component: useCallbackHook
   }
 ];
 
