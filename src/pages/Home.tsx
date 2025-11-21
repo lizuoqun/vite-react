@@ -1,18 +1,37 @@
 import {NavLink} from 'react-router';
-import {hookRouters} from '../router/index.ts';
+import {hookRouters} from '../router';
 
 const Home = () => {
-  return <div>
-    <div style={{border: '2px solid black', width: '30%'}}>
-      <h1>Hooks</h1>
-      <ul>
-        {
-          hookRouters.map(item => {
-            return <li key={item.path!}><NavLink to={item.path!}>{item.path}</NavLink></li>;
-          })
-        }
-      </ul>
-    </div>
+  const homeStyle = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '16px'
+  };
+  const itemStyle = {
+    border: '2px solid black',
+    borderRadius: '8px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 1)',
+    padding: '16px'
+  };
+  const titleStyle = {
+    fontSize: '24px',
+    fontWeight: 'bold'
+  };
+  return <div style={homeStyle}>
+    {
+      Array.from({length: 9}).map(() => {
+        return <div style={itemStyle}>
+          <div style={titleStyle}>Hooks</div>
+          <ul>
+            {
+              hookRouters.map(item => {
+                return <li key={item.path!}><NavLink to={item.path!}>{item.path}</NavLink></li>;
+              })
+            }
+          </ul>
+        </div>;
+      })
+    }
   </div>;
 };
 

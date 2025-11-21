@@ -2,7 +2,7 @@ import {useRef, useState} from 'react';
 import {Button, Flex} from 'antd';
 
 function useRefHook() {
-  const divRef = useRef<HTMLDivElement | null>(null);
+  const divRef = useRef<HTMLDivElement>({} as HTMLDivElement);
   const [count, setCount] = useState<number>(0);
   const [timer, setTimer] = useState<number>(0);
   // 因为每次渲染，divRef都会重新创建，所以每次点击都会获取最新的divRef

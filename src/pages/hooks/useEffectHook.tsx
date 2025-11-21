@@ -20,8 +20,7 @@ function Child() {
       <p>username：{userInfo?.username}</p>
       <p>email：{userInfo?.email}</p>
       <p>phone：{userInfo?.phone}</p>
-      <p>website：{userInfo?.website}</p>
-      <p>address：{userInfo?.address?.city}, {userInfo?.address?.street}</p>
+      <p>city：{userInfo?.address?.city}</p>
     </div>}
   </>;
 }

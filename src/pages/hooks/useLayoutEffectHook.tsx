@@ -4,9 +4,9 @@ function useLayoutEffectHook() {
   const [count, setCount] = useState(0);
   const SUM = 1;
 
-  const app1Ref = useRef<HTMLDivElement>(null);
-  const app2Ref = useRef<HTMLDivElement>(null);
-  const scrollTopRef = useRef<HTMLDivElement>(null);
+  const app1Ref = useRef<HTMLDivElement>({} as HTMLDivElement);
+  const app2Ref = useRef<HTMLDivElement>({} as HTMLDivElement);
+  const scrollTopRef = useRef<HTMLDivElement>({} as HTMLDivElement);
 
   // 异步执行，不阻塞DOM渲染
   useEffect(() => {

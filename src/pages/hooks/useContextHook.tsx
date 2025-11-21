@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {Button} from 'antd';
+import {Button, Flex} from 'antd';
 
 interface ThemeContextType {
   theme: string;
@@ -12,7 +12,11 @@ const Child = () => {
   const themeContext = useContext(ThemeContext);
   return <>
     <h1 style={themeContext.styles}>Child</h1>
-    <Button type="primary" onClick={() => console.log(themeContext)}>getTheme</Button>
+    <Flex gap="small" wrap="wrap">
+      <Button type="primary" onClick={() => console.log(themeContext)}>getTheme</Button>
+      <Button type="primary"
+              onClick={() => themeContext.setTheme(themeContext.theme === 'light' ? 'dark' : 'light')}>toggleTheme</Button>
+    </Flex>
   </>;
 };
 
