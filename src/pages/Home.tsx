@@ -19,13 +19,13 @@ const Home = () => {
   };
   return <div style={homeStyle}>
     {
-      Array.from({length: 9}).map(() => {
+      Array.from({length: 1}).map(() => {
         return <div style={itemStyle}>
           <div style={titleStyle}>Hooks</div>
           <ul>
             {
               hookRouters.map(item => {
-                return <li key={item.path!}><NavLink to={item.path!}>{item.path}</NavLink></li>;
+                return <li key={item.path}><NavLink to={item.path}>{item.path}</NavLink></li>;
               })
             }
           </ul>

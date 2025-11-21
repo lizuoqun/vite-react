@@ -11,9 +11,11 @@ import useImperativeHandleHook from '../pages/hooks/useImperativeHandleHook.tsx'
 import useContextHook from '../pages/hooks/useContextHook.tsx';
 import useMemoHook from '../pages/hooks/useMemoHook.tsx';
 import useCallbackHook from '../pages/hooks/useCallbackHook.tsx';
+import useDebugValueHook from '../pages/hooks/useDebugValueHook.tsx';
+import useIdHook from '../pages/hooks/useIdHook.tsx';
 import Home from '../pages/Home.tsx';
 
-export const hookRouters: any[] = [
+export const hookRouters: {path: string, Component: any}[] = [
   {
     path: '/',
     Component: Home
@@ -65,6 +67,14 @@ export const hookRouters: any[] = [
   {
     path: '/useCallbackHook',
     Component: useCallbackHook
+  },
+  {
+    path: '/useDebugValueHook',
+    Component: useDebugValueHook
+  },
+  {
+    path: '/useIdHook',
+    Component: useIdHook
   }
 ];
 
