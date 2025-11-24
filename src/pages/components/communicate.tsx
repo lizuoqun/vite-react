@@ -5,7 +5,7 @@ interface Props {
   title: string;
   age?: number;
   children?: React.ReactNode;
-  callback: (params: string) => void;
+  callback?: (params: string) => void;
 }
 
 // 使用默认值

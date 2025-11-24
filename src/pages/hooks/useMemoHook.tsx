@@ -45,7 +45,7 @@ function Shop() {
     <div>
       <h1>父组件</h1>
       <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}/>
-      <table border={1} cellPadding={5} cellSpacing={0}>
+      <table className="border-2 border-solid border-[#666]">
         <thead>
         <tr>
           <th>商品名称</th>

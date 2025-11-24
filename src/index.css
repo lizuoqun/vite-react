@@ -1,8 +1,6 @@
 .message {
     width: 160px;
     height: 30px;
-    position: fixed;
-    top: 10px;
     left: 50%;
     margin-left: -80px;
     background: #fff;
@@ -13,9 +11,12 @@
     transition: all 0.3s ease-in-out;
     opacity: 1;
     transform: translateY(0);
+    @apply fixed top-10;
 }
 
 .message.removing {
     opacity: 0;
     transform: translateX(100%);
 }
+
+@import "tailwindcss";

@@ -39,7 +39,7 @@ function useLayoutEffectHook() {
   return <>
     <div>app</div>
     {
-      Array.from({length: count}).map((item, index) => {
+      Array.from({length: count}).map((_, index) => {
         return <div key={index}>{index}</div>;
       })
     }
@@ -47,7 +47,7 @@ function useLayoutEffectHook() {
     <div ref={app2Ref} style={{opacity: '0', width: '100px', height: '100px', background: 'blue'}}>app2</div>
     <div ref={scrollTopRef} style={{height: '500px', overflow: 'auto'}} onScroll={handelScroll}>
       {
-        Array.from({length: 500}).map((item, index) => {
+        Array.from({length: 500}).map((_, index) => {
           return <div key={index}>{index}</div>;
         })
       }

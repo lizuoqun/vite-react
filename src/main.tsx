@@ -12,11 +12,12 @@ createRoot(document.getElementById('root')!).render(
 );
 
 unstableSetRender((node, container) => {
-  container._reactRoot ||= createRoot(container);
-  const root = container._reactRoot;
+  const root = createRoot(container);
   root.render(node);
   return async () => {
     await new Promise((resolve) => setTimeout(resolve, 0));
     root.unmount();
   };
 });
+
+

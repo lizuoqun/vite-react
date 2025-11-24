@@ -1,5 +1,6 @@
-import {Input, InputRef} from 'antd';
-import React, {useRef, useState} from 'react';
+import type {InputRef} from 'antd';
+import {Input} from 'antd';
+import {useRef, useState} from 'react';
 
 const Child1 = () => {
   const [value, setValue] = useState('');
@@ -26,6 +27,17 @@ const Child3 = () => {
   </>;
 };
 
+const Child4 = () => {
+  const [file, setFile] = useState<File>();
+  const inputRef = useRef<InputRef>({});
+  return <>
+    <p>文件选择器，非受控组件</p>
+    <Input type="file" value={file} onChange={(e) => setFile(e.target.files?.[0])}/>
+    <p>文件选择器，非受控组件，通过 ref 访问文件----{inputRef.current.value}</p>
+    <Input defaultValue={file} type="file" ref={inputRef}/>
+  </>;
+};
+
 const controlled = () => {
   return <>
     <Child1/>
@@ -33,6 +45,8 @@ const controlled = () => {
     <Child2/>
     <hr/>
     <Child3/>
+    <hr/>
+    <Child4/>
   </>;
 };
 

@@ -1,3 +1,5 @@
+import React, {ComponentType, lazy} from 'react';
+
 import {createBrowserRouter} from 'react-router';
 import UseStateHooke from '../pages/hooks/useStateHook.tsx';
 import UseReducerHook from '../pages/hooks/useReducerHook.tsx';
@@ -17,7 +19,13 @@ import useIdHook from '../pages/hooks/useIdHook.tsx';
 import communicate from '../pages/components/communicate.tsx';
 import controlled from '../pages/components/controlled.tsx';
 import Home from '../pages/Home.tsx';
-import React from 'react';
+
+
+const SuspenseComponent = lazy<ComponentType>(() => import('../pages/components/suspense.tsx'));
+const hoComponents = lazy<ComponentType>(() => import('../pages/components/hoComponents.tsx'));
+const Portal = lazy<ComponentType>(() => import('../pages/components/portal.tsx'));
+
+
 
 interface RouterItem {
   path: string;
@@ -95,6 +103,18 @@ export const componentRouters: RouterItem[] = [
   {
     path: '/controlled',
     Component: controlled
+  },
+  {
+    path: '/suspense',
+    Component: SuspenseComponent
+  },
+  {
+    path: '/hoComponents',
+    Component: hoComponents
+  },
+  {
+    path: '/portal',
+    Component: Portal
   }
 ];
 
