@@ -1,8 +1,8 @@
 import {NavLink} from 'react-router';
-import {componentRouters, hookRouters} from '../router';
+import {componentRouters, hookRouters, layoutRouters} from '../router';
 
 const Home = () => {
-  const routerObject = {'Hooks': hookRouters, 'Components': componentRouters};
+  const routerObject = {'Hooks': hookRouters, 'Components': componentRouters, 'Layout': layoutRouters};
   return <>
     <div className="grid grid-cols-4 gap-[16px] m-4">
       {

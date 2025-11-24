@@ -25,11 +25,13 @@ const SuspenseComponent = lazy<ComponentType>(() => import('../pages/components/
 const hoComponents = lazy<ComponentType>(() => import('../pages/components/hoComponents.tsx'));
 const Portal = lazy<ComponentType>(() => import('../pages/components/portal.tsx'));
 
-
+const Layout = lazy<ComponentType>(() => import('../pages/layout/index.tsx'));
+const About = lazy<ComponentType>(() => import('../pages/layout/About.tsx'));
 
 interface RouterItem {
   path: string;
   Component: React.FC;
+  children?: RouterItem[];
 }
 
 export const hookRouters: RouterItem[] = [
@@ -118,7 +120,24 @@ export const componentRouters: RouterItem[] = [
   }
 ];
 
-const routerArray: any[] = [...hookRouters, ...componentRouters];
+export const layoutRouters: RouterItem[] = [
+  {
+    path: '/layout',
+    Component: Layout,
+    children: [
+      {
+        path: 'home',
+        Component: Home
+      },
+      {
+        path: 'about',
+        Component: About
+      }
+    ]
+  }
+];
+
+export const routerArray: any[] = [...hookRouters, ...componentRouters, ...layoutRouters];
 
 const router = createBrowserRouter(routerArray);
 
