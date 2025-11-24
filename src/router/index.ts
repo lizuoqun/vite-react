@@ -15,6 +15,7 @@ import useDebugValueHook from '../pages/hooks/useDebugValueHook.tsx';
 import useIdHook from '../pages/hooks/useIdHook.tsx';
 
 import communicate from '../pages/components/communicate.tsx';
+import controlled from '../pages/components/controlled.tsx';
 import Home from '../pages/Home.tsx';
 import React from 'react';
 
@@ -90,6 +91,10 @@ export const componentRouters: RouterItem[] = [
   {
     path: '/communicate',
     Component: communicate
+  },
+  {
+    path: '/controlled',
+    Component: controlled
   }
 ];
 
