@@ -3,7 +3,7 @@ import useUserImmerStore from '../../store/userImmerStore';
 import useInfoStore, {InfoInterface} from '../../store/infoStore';
 import {Button, Flex} from 'antd';
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useShallow} from 'zustand/react/shallow';
 
 const countTwo: React.FC = () => {
@@ -17,6 +17,22 @@ const countTwo: React.FC = () => {
   })));
   // const name = useInfoStore((state) => state.name);
   // const address = useInfoStore((state) => state.address);
+  const clearLocalStorage = () => {
+    useInfoStore.persist.clearStorage();
+  };
+  const [status, setStatus] = useState('未成年');
+  useEffect(() => {
+    useInfoStore.subscribe(state => state.age, age => {
+      if (age >= 18) {
+        setStatus('成年');
+      } else {
+        setStatus('未成年');
+      }
+    }, {
+      equalityFn: (a, b) => a === b, // 默认为浅比较
+      fireImmediately: true // 立即执行
+    });
+  }, []);
   return <>
     <h1>countB: {count}</h1>
     <h1>Other: {other}</h1>
@@ -37,6 +53,8 @@ const countTwo: React.FC = () => {
     <br/>
     <p>Name: {name}</p>
     <p>Address: {address.county} {address.province} {address.city}</p>
+    <p>Status: {status}</p>
+    <Button type="primary" onClick={clearLocalStorage}>Clear LocalStorage</Button>
   </>;
 };
 

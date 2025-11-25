@@ -15,7 +15,7 @@ interface UserInterface {
 }
 
 // 注意：使用 immer 中间件时的特殊结构
-const useUserImmerStore = create<UserInterface>()(immer(((set) => ({
+const useUserImmerStore = create<UserInterface>()(immer((set) => ({
   gourd: {
     oneChild: 'oneChild',
     twoChild: 'twoChild',
@@ -31,6 +31,6 @@ const useUserImmerStore = create<UserInterface>()(immer(((set) => ({
     state.gourd.twoChild = 'twoChild-update';
     state.gourd.threeChild = 'threeChild-update';
   })
-}))));
+})));
 
 export default useUserImmerStore;
