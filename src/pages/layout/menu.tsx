@@ -11,19 +11,19 @@ const Menu = () => {
 
   const menuItems = [
     {
-      key: '/layout/home',
+      key: 'home',
       label: 'Home',
       icon: <AppstoreOutlined/>
     },
     {
-      key: '/layout/about',
+      key: 'about/123',
       label: 'About',
       icon: <AppstoreOutlined/>
     }
   ];
 
   return <>
-    <AntdMenu onClick={handleClick} style={{height: '100vh'}} items={menuItems}/>;
+    <AntdMenu style={{height: '100%'}} onClick={handleClick} items={menuItems} defaultSelectedKeys={['home']}/>;
   </>;
 };
 

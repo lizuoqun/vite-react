@@ -38,6 +38,7 @@ export default defineConfig(() => {
     plugins: [react(), viteMockServer(), tailwindcss()],
     server: {
       host: true,
+      port: 5172,
       open: true
     },
     build: {

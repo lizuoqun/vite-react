@@ -19,18 +19,27 @@ import useIdHook from '../pages/hooks/useIdHook.tsx';
 import communicate from '../pages/components/communicate.tsx';
 import controlled from '../pages/components/controlled.tsx';
 import Home from '../pages/Home.tsx';
-
+import Error from '../Error.tsx';
 
 const SuspenseComponent = lazy<ComponentType>(() => import('../pages/components/suspense.tsx'));
 const hoComponents = lazy<ComponentType>(() => import('../pages/components/hoComponents.tsx'));
 const Portal = lazy<ComponentType>(() => import('../pages/components/portal.tsx'));
 
 const Layout = lazy<ComponentType>(() => import('../pages/layout/index.tsx'));
-const About = lazy<ComponentType>(() => import('../pages/layout/About.tsx'));
+const Param = lazy<ComponentType>(() => import('../pages/layout/param.tsx'));
+
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const data = [
+  {name: '张三', age: 18, address: '广州'}
+];
 
 interface RouterItem {
   path: string;
-  Component: React.FC;
+  lazy?: () => Promise<{ Component: React.FC }>;
+  loader?: () => Promise<any>;
+  action?: (args: any) => Promise<any>;
+  Component?: React.FC;
+  ErrorBoundary?: React.FC;
   children?: RouterItem[];
 }
 
@@ -127,17 +136,65 @@ export const layoutRouters: RouterItem[] = [
     children: [
       {
         path: 'home',
-        Component: Home
+        Component: Home,
+        loader: async () => {
+          throw {
+            code: 404,
+            message: 'Loader Error By ErrorBoundary'
+          };
+        },
+        ErrorBoundary: Error
       },
       {
-        path: 'about',
-        Component: About
+        path: 'about/:id',
+        lazy: async () => {
+          await sleep(2000);
+          const About = await import('../pages/layout/About.tsx');
+          return {
+            Component: About.default
+          };
+        },
+        loader: async () => {
+          return {
+            data,
+            message: 'success'
+          };
+        },
+        action: async ({request}) => {
+          await sleep(2000);
+          const formData = await request.formData();
+          data.push({
+            address: formData.get('name'),
+            name: formData.get('name'),
+            age: formData.get('age')
+          });
+          return {
+            data,
+            success: true
+          };
+        }
       }
     ]
+  },
+  {
+    path: '/param',
+    Component: Param
   }
 ];
 
-export const routerArray: any[] = [...hookRouters, ...componentRouters, ...layoutRouters];
+const notFound = [
+  {
+    path: '*',
+    lazy: async () => {
+      const notFound = await import('../notFound.tsx');
+      return {
+        Component: notFound.default
+      };
+    }
+  }
+];
+
+export const routerArray: any[] = [...hookRouters, ...componentRouters, ...layoutRouters, ...notFound];
 
 const router = createBrowserRouter(routerArray);
 
