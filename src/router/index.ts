@@ -28,6 +28,7 @@ const Portal = lazy<ComponentType>(() => import('../pages/components/portal.tsx'
 const Layout = lazy<ComponentType>(() => import('../pages/layout/index.tsx'));
 const Param = lazy<ComponentType>(() => import('../pages/layout/param.tsx'));
 
+const Zustand = lazy<ComponentType>(() => import('../pages/zustand/index.tsx'));
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const data = [
   {name: '张三', age: 18, address: '广州'}
@@ -182,6 +183,13 @@ export const layoutRouters: RouterItem[] = [
   }
 ];
 
+export const zusTandRouters: RouterItem[] = [
+  {
+    path: '/zustand',
+    Component: Zustand
+  }
+];
+
 const notFound = [
   {
     path: '*',
@@ -194,7 +202,7 @@ const notFound = [
   }
 ];
 
-export const routerArray: any[] = [...hookRouters, ...componentRouters, ...layoutRouters, ...notFound];
+export const routerArray: any[] = [...hookRouters, ...componentRouters, ...layoutRouters, ...notFound, ...zusTandRouters];
 
 const router = createBrowserRouter(routerArray);
 
